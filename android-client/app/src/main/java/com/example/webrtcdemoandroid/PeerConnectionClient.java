@@ -5,6 +5,8 @@ import android.util.Log;
 import com.github.nkzawa.emitter.Emitter;
 import com.github.nkzawa.socketio.client.IO;
 import com.github.nkzawa.socketio.client.Socket;
+import java.net.URISyntaxException;
+import java.util.LinkedList;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.webrtc.AudioSource;
@@ -19,9 +21,6 @@ import org.webrtc.SessionDescription;
 import org.webrtc.VideoCapturer;
 import org.webrtc.VideoCapturerAndroid;
 import org.webrtc.VideoSource;
-
-import java.net.URISyntaxException;
-import java.util.LinkedList;
 
 public class PeerConnectionClient {
     private final static String TAG = PeerConnectionClient.class.getCanonicalName();
@@ -279,7 +278,7 @@ public class PeerConnectionClient {
 
         socketClient.connect();
 
-        iceServers.add(new PeerConnection.IceServer("stun:23.21.150.121"));
+        // iceServers.add(new PeerConnection.IceServer("stun:23.21.150.121"));
         iceServers.add(new PeerConnection.IceServer("stun:stun.l.google.com:19302"));
 
         pcConstraints.mandatory.add(new MediaConstraints.KeyValuePair("OfferToReceiveAudio", "true"));

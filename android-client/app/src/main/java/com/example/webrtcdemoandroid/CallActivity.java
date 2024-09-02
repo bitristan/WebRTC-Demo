@@ -1,21 +1,19 @@
 package com.example.webrtcdemoandroid;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.Manifest;
 import android.content.Intent;
 import android.graphics.Point;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.view.Window;
+import android.view.WindowManager.LayoutParams;
 import android.widget.Toast;
-
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import org.webrtc.MediaStream;
 import org.webrtc.VideoRenderer;
 import org.webrtc.VideoRendererGui;
-import android.view.WindowManager.LayoutParams;
 
 public class CallActivity extends AppCompatActivity implements PeerConnectionClient.RtcListener {
     private static final String VIDEO_CODEC_VP9 = "VP9";
@@ -51,13 +49,13 @@ public class CallActivity extends AppCompatActivity implements PeerConnectionCli
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().addFlags(
-//                LayoutParams.FLAG_FULLSCREEN
                           LayoutParams.FLAG_KEEP_SCREEN_ON
                         | LayoutParams.FLAG_DISMISS_KEYGUARD
                         | LayoutParams.FLAG_SHOW_WHEN_LOCKED
                         | LayoutParams.FLAG_TURN_SCREEN_ON);
         setContentView(R.layout.activity_call);
-        mSocketAddress = getString(R.string.serverAddress);
+        // TODO 更换为自己的局域网地址
+        mSocketAddress = "http://10.193.199.41:4000";
 
         vsv = findViewById(R.id.glview_call);
         vsv.setPreserveEGLContextOnPause(true);
